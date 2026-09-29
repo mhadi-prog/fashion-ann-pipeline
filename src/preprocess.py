@@ -11,7 +11,6 @@ from sklearn.model_selection import train_test_split
 RAW_DIR = "data/raw"
 PROCESSED_DIR = "data/processed"
 
-
 def main():
     with open("params.yaml") as f:
         params = yaml.safe_load(f)["preprocess"]
@@ -25,10 +24,14 @@ def main():
 
     x_train_full = x_train_full.astype("float32")
     x_test = x_test.astype("float32")
+
     mean = x_train_full.mean()
     std = x_train_full.std()
     x_train_full = (x_train_full - mean) / std
     x_test = (x_test - mean) / std
+    x_train_full = (x_train_full / 127.5) - 1.0
+    x_test = (x_test / 127.5) - 1.0
+
 
     x_train, x_val, y_train, y_val = train_test_split(
         x_train_full,
@@ -47,7 +50,6 @@ def main():
 
     print(f"Saved processed data to {PROCESSED_DIR}/")
     print(f"  train: {x_train.shape}, val: {x_val.shape}, test: {x_test.shape}")
-
 
 if __name__ == "__main__":
     main()
