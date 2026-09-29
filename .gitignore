@@ -5,3 +5,4 @@ __pycache__/
 *.h5
 /dummy.txt
 /models
+.DS_Store
