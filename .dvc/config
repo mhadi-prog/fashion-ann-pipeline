@@ -1,5 +1,5 @@
 [core]
     remote = gdrive_storage
 ['remote "gdrive_storage"']
-    url = gdrive://18IyCAzqVZP4khR6T6cvpBfvb9FjnFSq1
+    url = gdrive://18IyCAzqVZP4khR6T6cvpBfvb9FjnFSq1?dmr=1&ec=wgc-drive-%5Bmodule%5D-goto[core]
     
