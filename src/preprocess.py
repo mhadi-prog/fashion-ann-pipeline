@@ -23,8 +23,12 @@ def main():
     x_test = np.load(os.path.join(RAW_DIR, "x_test.npy"))
     y_test = np.load(os.path.join(RAW_DIR, "y_test.npy"))
 
-    x_train_full = x_train_full.astype("float32") / 255.0
-    x_test = x_test.astype("float32") / 255.0
+    x_train_full = x_train_full.astype("float32")
+    x_test = x_test.astype("float32")
+    mean = x_train_full.mean()
+    std = x_train_full.std()
+    x_train_full = (x_train_full - mean) / std
+    x_test = (x_test - mean) / std
 
     x_train, x_val, y_train, y_val = train_test_split(
         x_train_full,
