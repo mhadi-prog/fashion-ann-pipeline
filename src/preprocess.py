@@ -29,8 +29,7 @@ def main():
     std = x_train_full.std()
     x_train_full = (x_train_full - mean) / std
     x_test = (x_test - mean) / std
-    x_train_full = (x_train_full / 127.5) - 1.0
-    x_test = (x_test / 127.5) - 1.0
+    
 
 
     x_train, x_val, y_train, y_val = train_test_split(
